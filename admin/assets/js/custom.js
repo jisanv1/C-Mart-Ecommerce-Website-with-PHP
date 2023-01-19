@@ -17,3 +17,15 @@ function getImgData() {
     });    
   }
 }
+
+// $(document).ready(function(){
+
+//   $('#catselect').on('change', function(){
+//     if($(this).is(':checked')){
+//       alert($('this').val());
+//     }else{
+
+//     }
+
+//   });
+// });

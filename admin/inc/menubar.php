@@ -46,7 +46,7 @@
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="brand.php">
               <i class="bi bi-circle"></i><span>Brand</span>
             </a>
           </li>
