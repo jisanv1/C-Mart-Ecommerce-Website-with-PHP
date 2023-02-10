@@ -21,7 +21,7 @@
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="couponcode.php">
               <i class="bi bi-circle"></i><span>Coupon Code</span>
             </a>
           </li>
@@ -51,12 +51,12 @@
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="products.php?data=add">
               <i class="bi bi-circle"></i><span>Add New Product</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="products.php?data=view">
               <i class="bi bi-circle"></i><span>View All Products</span>
             </a>
           </li>
@@ -76,12 +76,12 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="users.php?data=add">
               <i class="bi bi-circle"></i><span>Add new user</span>
             </a>
           </li>
           <li>
-            <a href="icons-remix.html">
+            <a href="users.php?data=view">
               <i class="bi bi-circle"></i><span>View all users</span>
             </a>
           </li>

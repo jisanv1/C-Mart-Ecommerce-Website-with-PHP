@@ -1,5 +1,6 @@
 <?php 
     include '../inc/connection.php';
+    include '../inc/function.php';
 
     // update category
     if(isset($_POST['update_category'])){
@@ -40,4 +41,54 @@
                 }
         }
     }
+
+
+
+    //brand info update
+    if(isset($_POST['update_brand'])){
+        $brand_name = $_POST['brand_name'];
+        $brand_status = $_POST['b_status'];
+        $edit_id = $_POST['edit_id'];
+
+        $file_name = $_FILES['choose-file']['name'];
+        $tmp_name = $_FILES['choose-file']['tmp_name'];
+    
+        if(!empty($file_name)){
+            $file = is_img($file_name);
+   
+            if($file){
+
+                //delete category image
+                delete_file('b_logo','mart_brand' , 'ID', $edit_id,'../assets/img/products/brand/');
+
+               $update_name = rand().$file_name;
+               move_uploaded_file($tmp_name, '../assets/img/products/brand/'.$update_name);
+               $brand_update_sql = "UPDATE mart_brand SET b_name='$brand_name', b_logo='$update_name', b_status='$brand_status' WHERE ID='$edit_id'";
+            }else{
+               echo 'not an image';
+            }
+           }else{
+            $brand_update_sql = "UPDATE mart_brand SET b_name='$brand_name', b_status='$brand_status' WHERE ID='$edit_id'";
+           }
+
+           
+           $brand_insert_res = mysqli_query($db, $brand_update_sql);
+           
+           if($brand_insert_res){
+            header('location: ../brand.php');
+            }else{
+                die('Brand update error!'.mysqli_error($db));
+            }
+    }
+    
+    
+
+
+    
+
+
+
+
+
+
 ?>

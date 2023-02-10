@@ -70,13 +70,60 @@ function Show_Sub_Category($cat_id){
 //   return $ids;
 // }
 
+// check image
+
+function is_img($file_name){
+  global $db;
+
+  $splitedArray = explode('.', $file_name);
+  $extn = strtolower(end($splitedArray));
+
+  $extentions = array('png', 'jpg', 'jpeg');
+
+  if(in_array($extn, $extentions) === true){
+      return true;
+  }else{
+      return false;
+  }
+}
 
 
 
+//delete record
+
+function delete($table, $key, $delid, $redirect){
+  global $db;
+
+  $brand_delete_sql = "DELETE FROM $table where $key = '$delid'";
+                  $del_reply = mysqli_query($db, $brand_delete_sql);
+                  if($del_reply){
+                    header('location: '.$redirect);
+                  }else{
+                    die('Delete error!'.mysqli_error($db));
+                  }
+}
+//delete file
+
+function delete_file($file_name, $table, $key, $file_id, $path){
+  global $db;
+
+  $file_sql = "SELECT $file_name from $table where $key = '$file_id'";
+        $file_name_result = mysqli_query($db, $file_sql);
+        $row = mysqli_fetch_assoc($file_name_result);
+
+        $f_name = $row[$file_name];
+
+        unlink($path.$f_name);
+}
 
 
+// find values based on their id
 
+function findval($field,$table,$key,$fkey){
+  global $db;
 
-?>
-
-
+  $catName = mysqli_query($db,"SELECT $field FROM $table WHERE $key='$fkey'");
+  $row = mysqli_fetch_assoc($catName);
+  $file_name = $row[$field];
+  return $file_name;
+}

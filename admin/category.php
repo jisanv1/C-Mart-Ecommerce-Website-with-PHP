@@ -255,13 +255,10 @@
       if(isset($_GET['deleteid'])){
         $delid = $_GET['deleteid'];
 
-        $cat_delete_sql = "DELETE FROM mart_category where ID = '$delid'";
-        $del_reply = mysqli_query($db, $cat_delete_sql);
-        if($del_reply){
-          header('location: category.php');
-        }else{
-          die('Category delete error!'.nysqli_error($db));
-        }
+        //delete category image
+        delete_file('c_image','mart_category' , 'ID', $delid, 'assets/img/products/category/');
+
+        delete('mart_category', 'ID', $delid, 'category.php');
       }
     ?>
 
